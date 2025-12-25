@@ -57,6 +57,17 @@ The app will be available at `http://localhost:5173`.
 
 ## Deployment
 
+### Deploying to Netlify (Recommended)
+
+1.  Connect your GitHub repository to [Netlify](https://www.netlify.com/).
+2.  In the Netlify dashboard, go to **Site settings > Environment variables**.
+3.  Add a new variable:
+    - Key: `VITE_OMDB_API_KEY`
+    - Value: `your_actual_key_here`
+4.  Trigger a new deploy.
+
+The application is already configured with a **Netlify Function proxy** to keep your API key secure in production.
+
 To create a production build:
 
 ```bash

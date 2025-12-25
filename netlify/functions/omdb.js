@@ -1,11 +1,15 @@
 export default async (req, context) => {
   const url = new URL(req.url);
   const params = url.searchParams;
-  const apiKey = process.env.VITE_OMDB_API_KEY;
+  const apiKey = process.env.VITE_OMDB_API_KEY || process.env.OMDB_API_KEY;
 
   if (!apiKey) {
     return new Response(
-      JSON.stringify({ Error: "API Key not configured on server" }),
+      JSON.stringify({
+        Error: "API Key not configured on server",
+        details:
+          "Ensure VITE_OMDB_API_KEY is set in your environment variables.",
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
