@@ -13,7 +13,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const isApiKeyMissing = !import.meta.env.VITE_OMDB_API_KEY || import.meta.env.VITE_OMDB_API_KEY === 'your_key_here';
+  const isDev = import.meta.env.DEV || window.location.hostname === 'localhost';
+  const isApiKeyMissing = isDev && (!import.meta.env.VITE_OMDB_API_KEY || import.meta.env.VITE_OMDB_API_KEY === 'your_key_here');
 
   const searchMovies = useCallback(async (searchQuery, searchPage, searchType) => {
     setLoading(true);
